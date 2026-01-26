@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="com.eltherm.test_rcp.branding">
+    <module_version install_time="1769437130199" last="true" origin="installer" specification_version="1.0">
+        <file crc="3696014142" name="config/Modules/com-eltherm-test_rcp-branding.xml"/>
+        <file crc="1527479149" name="core/locale/core_testrcp.jar"/>
+        <file crc="924845841" name="modules/com-eltherm-test_rcp-branding.jar"/>
+        <file crc="2687717857" name="modules/locale/org-netbeans-core-windows_testrcp.jar"/>
+        <file crc="133386527" name="modules/locale/org-netbeans-core_testrcp.jar"/>
+    </module_version>
+</module>

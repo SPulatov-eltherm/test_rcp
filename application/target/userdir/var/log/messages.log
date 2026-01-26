@@ -1,0 +1,136 @@
+-------------------------------------------------------------------------------
+>Log Session: Monday, January 26, 2026, 3:19:07 PM Central European Standard Time
+>System Info: 
+  Product Version         = test_rcp 28-bb4f5c31012229fb1577f019127e203b6925ab33
+  Operating System        = Windows 11 version 10.0 running on amd64
+  Java; VM; Vendor        = 21.0.8; OpenJDK 64-Bit Server VM 21.0.8+9-LTS; Microsoft
+  Runtime                 = OpenJDK Runtime Environment 21.0.8+9-LTS
+  Java Home               = C:\Users\Samir\.jdks\ms-21.0.8
+  System Locale; Encoding = de_DE (testrcp); UTF-8
+  Home Directory          = C:\Users\Samir
+  Current Directory       = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp
+  User Directory          = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\userdir
+  Cache Directory         = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\userdir\var\cache
+  Installation            = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\bin
+                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\etc
+                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\extra
+                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\java
+                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform
+                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\testrcp
+                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform
+  Boot & Ext. Classpath   = 
+  Application Classpath   = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\boot.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-modules.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-util-lookup.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-util-ui.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-util.jar
+  Startup Classpath       = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\asm-9.9.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\asm-commons-9.9.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\asm-tree-9.9.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\core-base.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\core.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\org-netbeans-libs-asm.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\org-openide-filesystems-compat8.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\org-openide-filesystems.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\testrcp\core\locale\core_testrcp.jar
+  Java Boot Modules       = [java.base, java.compiler, java.datatransfer, java.desktop, java.instrument, java.logging, java.management, java.management.rmi, java.naming, java.net.http, java.prefs, java.rmi, java.scripting, java.security.jgss, java.security.sasl, java.smartcardio, java.sql, java.sql.rowset, java.transaction.xa, java.xml, java.xml.crypto, jdk.accessibility, jdk.attach, jdk.charsets, jdk.compiler, jdk.crypto.cryptoki, jdk.crypto.ec, jdk.crypto.mscapi, jdk.dynalink, jdk.editpad, jdk.httpserver, jdk.internal.ed, jdk.internal.jvmstat, jdk.internal.le, jdk.internal.opt, jdk.jartool, jdk.javadoc, jdk.jconsole, jdk.jdeps, jdk.jdi, jdk.jdwp.agent, jdk.jfr, jdk.jlink, jdk.jpackage, jdk.jshell, jdk.jsobject, jdk.jstatd, jdk.localedata, jdk.management, jdk.management.agent, jdk.management.jfr, jdk.naming.dns, jdk.naming.rmi, jdk.net, jdk.nio.mapmode, jdk.random, jdk.sctp, jdk.security.auth, jdk.security.jgss, jdk.unsupported, jdk.unsupported.desktop, jdk.xml.dom, jdk.zipfs]
+-------------------------------------------------------------------------------
+INFO [org.netbeans.core.startup.NbEvents]: Turning on modules:
+	org.openide.util.lookup [8.64 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.util [9.38 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.util.ui [9.39 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.modules [7.78 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.api.annotations.common/1 [1.58 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.filesystems [9.43 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.awt [7.98 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.api.progress/1 [1.78 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.api.progress.nb [1.78 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.dialogs [7.77 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.nodes [7.75 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.windows [6.107 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.libs.jsvg/2 [2.2 1.7.1 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.util.ui.svg [1.24 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.editor.mimelookup/1 [1.70 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.text [6.99 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.api.scripting [1.27 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.swing.tabcontrol [1.87 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.swing.outline [1.64 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.explorer [6.92 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.actions [6.69 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.queries/1 [1.73 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.api.templates [1.38 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.filesystems.nb [9.40 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.loaders [7.100 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.api.intent [1.32 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.api.io [1.33 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.io [1.79 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.openide.filesystems.compat8 [9.39 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.swing.plaf [1.72 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.keyring [1.54 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.libs.asm [5.33 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.bootstrap/1 [2.109 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core.startup.base [1.92.0.1 1 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core.startup/1 [1.93.0.1 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.sampler [1.44 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core/2 [3.81 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.spi.quicksearch [1.57 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.options.api/1 [1.75 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.libs.flatlaf/1 [1.24 3.6.2 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.swing.laf.flatlaf [1.23 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.swing.laf.dark/1 [2.25.0.2 2 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.templates/1 [1.37 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.settings/1 [1.79 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.sendopts/2 [2.66 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.progress.ui [1.63 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.print [7.56 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.options.keymap [1.67 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.libs.jna/2 [2.25 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.masterfs/2 [2.85.0.2 2 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.masterfs.windows [1.46 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.masterfs.ui [2.33.0.2 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.masterfs.nio2 [1.45 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.keyring.fallback [1.38 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.keyring.impl [1.54 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.janitor [1.23 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.favorites/1 [1.76 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.editor.mimelookup.impl/1 [1.62 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.autoupdate.services [1.86 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.autoupdate.cli [1.44 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core.windows/2 [2.115 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core.ui/1 [1.75 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.libs.osgi [1.52 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.libs.felix [2.45 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.autoupdate.ui [1.76 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.modules.core.kit [1.61 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.libs.jna.platform/2 [2.25 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core.output2/1 [1.72 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core.network [1.42 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core.netigso [1.61 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core.nativeaccess/1 [1.61 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core.multitabs/1 [1.42.0.1 1 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	org.netbeans.core.io.ui/1 [1.60 28-bb4f5c31012229fb1577f019127e203b6925ab33]
+	com.eltherm.test_rcp.branding [1.0 1.0-20260126 202601261418]
+	com.eltherm.maven_test_module [1.0 1.0-20260126 202601261418]
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy resolver: Windows
+INFO [org.netbeans.core.network.proxy.windows.WindowsNetworkProxy]: Windows system proxy resolver: auto detect
+INFO [org.netbeans.core.network.proxy.windows.WindowsNetworkProxy]: Windows system proxy resolver: auto - PAC (http://wpad/wpad.dat)
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy reloading succeeded.
+INFO [org.netbeans.ui.metrics.laf]: USG_LOOK_AND_FEEL
+WARNING [org.openide.filesystems.Ordering]: Not all children in Windows2/Modes/explorer/ marked with the position attribute: [NavigatorTopComponent.wstcref], but some are: [favorites.wstcref]
+Diagnostic information
+Input arguments:
+	-Dnetbeans.logger.console=true
+	-ea
+	-Dnetbeans.user.dir=C:\Users\Samir\NetBeansProjects\test_rcp\application
+	-Djdk.home=C:\Users\Samir\.jdks\ms-21.0.8
+	-Dnetbeans.home=C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform
+	-Dnetbeans.user=C:\Users\Samir\NetBeansProjects\test_rcp\application\target\userdir
+	-Dnetbeans.default_userdir_root=C:\Users\Samir\AppData\Roaming\testrcp
+	-XX:+HeapDumpOnOutOfMemoryError
+	-XX:HeapDumpPath=C:\Users\Samir\NetBeansProjects\test_rcp\application\target\userdir\var\log\heapdump.hprof
+	-Dsun.awt.keepWorkingSetOnMinimize=true
+	-Dnetbeans.dirs=C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\bin;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\etc;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\extra;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\java;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\testrcp
+	exit
+Compiler: HotSpot 64-Bit Tiered Compilers
+Heap memory usage: initial 252,0MB maximum 4020,0MB
+Non heap memory usage: initial 7,3MB maximum -1b
+Garbage collector: G1 Young Generation (Collections=3 Total time spent=0s)
+Garbage collector: G1 Concurrent GC (Collections=2 Total time spent=0s)
+Garbage collector: G1 Old Generation (Collections=0 Total time spent=0s)
+Classes: loaded=5842 total loaded=5842 unloaded 0
+INFO [org.netbeans.core.ui.warmup.DiagnosticTask]: Total memory 16.858.472.448
+INFO [null]: Total physical memory 16.858.472.448
+WARNING [org.openide.filesystems.Ordering]: Not all children in Menu/Window/ marked with the position attribute: [com-eltherm-topcomponents-NavigatorTopComponent.shadow], but some are: [org-netbeans-modules-favorites-View.shadow, org-netbeans-core-io-ui-IOWindowAction.shadow, SwitchToRecentDocumentAction.shadow, Web, Tools, Separator3.instance, ConfigureWindow, org-netbeans-core-windows-actions-ResetWindowsAction.shadow, Separator4.instance, CloseWindowAction.shadow, CloseAllDocumentsAction.shadow, CloseAllButThisAction.shadow, GroupsMenuAction.shadow, DocumentsAction.shadow]
+INFO [org.netbeans.core.network.proxy.ProxyAutoConfig]: PAC script http://wpad/wpad.dat unavailable, proxy disabled
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy - mode: auto
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy - pac url: http://wpad/wpad.dat
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy TEST - http host: 
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy TEST - http port: 0

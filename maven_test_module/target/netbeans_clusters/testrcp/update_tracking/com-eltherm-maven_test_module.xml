@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="com.eltherm.maven_test_module">
+    <module_version install_time="1769437121872" last="true" origin="installer" specification_version="1.0">
+        <file crc="176815035" name="config/Modules/com-eltherm-maven_test_module.xml"/>
+        <file crc="1802284451" name="modules/com-eltherm-maven_test_module.jar"/>
+    </module_version>
+</module>
