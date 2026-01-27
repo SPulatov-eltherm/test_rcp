@@ -1,0 +1,8 @@
+maven_test_module/target/*
+application/target/*
+application/bin/*
+application/build/*
+application/dist/*
+application/logs/*
+application/temp/*
+application/temp/*
