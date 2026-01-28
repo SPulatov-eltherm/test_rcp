@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.core.startup.base">
-    <module_version install_time="1769437131387" last="true" origin="installer" specification_version="1.92.0.1">
+    <module_version install_time="1769602401033" last="true" origin="installer" specification_version="1.92.0.1">
         <file crc="1599687562" name="core/core-base.jar"/>
     </module_version>
 </module>

@@ -4,7 +4,10 @@
  */
 package com.eltherm.topcomponents;
 
+import com.eltherm.services.UIbuilderService;
+import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 import javax.swing.border.Border;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
@@ -37,15 +40,23 @@ import org.openide.util.NbBundle.Messages;
     "HINT_NavigatorTopComponent=This is a Navigator window"
 })
 public final class NavigatorTopComponent extends TopComponent {
-
+    
+    private final UIbuilderService uibuilder;
+    
     public NavigatorTopComponent() {
         initComponents();
         setName(Bundle.CTL_NavigatorTopComponent());
         setToolTipText(Bundle.HINT_NavigatorTopComponent());
         
-        Border loweredbevel = BorderFactory.createLoweredBevelBorder();
+       
+        JPanel navigator_panel = new JPanel();
         
-        setBorder(loweredbevel);
+        uibuilder = new UIbuilderService();
+        uibuilder.build_symbole_panel(navigator_panel);
+        
+        setLayout(new BorderLayout());
+        add(navigator_panel);
+       
     }
 
     /**

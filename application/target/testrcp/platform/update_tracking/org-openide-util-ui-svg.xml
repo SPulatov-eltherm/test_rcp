@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="org.openide.util.ui.svg">
-    <module_version install_time="1769437130146" last="true" origin="installer" specification_version="1.24">
+    <module_version install_time="1769602399535" last="true" origin="installer" specification_version="1.24">
         <file crc="905830884" name="config/Modules/org-openide-util-ui-svg.xml"/>
         <file crc="2616624325" name="modules/org-openide-util-ui-svg.jar"/>
     </module_version>

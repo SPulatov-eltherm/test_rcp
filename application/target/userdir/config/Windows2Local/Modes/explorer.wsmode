@@ -4,13 +4,13 @@
     <module name="org.netbeans.core.ui/1" spec="1.2" />
     <name unique="explorer"  />
   <kind type="view" />
-  <state type="joined"  />
+  <state type="joined"  minimized="true"  />
   <constraints>
-    <path orientation="horizontal" number="20" weight="0.3"/>
+    <path orientation="horizontal" number="20" weight="0.8719958202716823"/>
     <path orientation="vertical" number="20" weight="0.5"/>
   </constraints>
-  <bounds x="192" y="237" width="614" height="540" />
+  <bounds x="128" y="147" width="409" height="336" />
   <frame state="0"/>
-    <active-tc  id="NavigatorTopComponent" />
+    <active-tc  prev-id="NavigatorTopComponent" />
     <empty-behavior permanent="true"/>
 </mode>

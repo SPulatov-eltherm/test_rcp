@@ -1,26 +1,26 @@
 -------------------------------------------------------------------------------
->Log Session: Monday, January 26, 2026, 3:19:07 PM Central European Standard Time
+>Log Session: Wednesday, January 28, 2026, 2:50:44 PM Central European Standard Time
 >System Info: 
   Product Version         = test_rcp 28-bb4f5c31012229fb1577f019127e203b6925ab33
   Operating System        = Windows 11 version 10.0 running on amd64
-  Java; VM; Vendor        = 21.0.8; OpenJDK 64-Bit Server VM 21.0.8+9-LTS; Microsoft
-  Runtime                 = OpenJDK Runtime Environment 21.0.8+9-LTS
-  Java Home               = C:\Users\Samir\.jdks\ms-21.0.8
+  Java; VM; Vendor        = 21.0.9; OpenJDK 64-Bit Server VM 21.0.9+10-LTS; Eclipse Adoptium
+  Runtime                 = OpenJDK Runtime Environment 21.0.9+10-LTS
+  Java Home               = C:\Users\SPulatov\jdk-21.0.9+10
   System Locale; Encoding = de_DE (testrcp); UTF-8
-  Home Directory          = C:\Users\Samir
-  Current Directory       = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp
-  User Directory          = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\userdir
-  Cache Directory         = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\userdir\var\cache
-  Installation            = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\bin
-                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\etc
-                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\extra
-                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\java
-                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform
-                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\testrcp
-                            C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform
+  Home Directory          = C:\Users\SPulatov
+  Current Directory       = C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp
+  User Directory          = C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\userdir
+  Cache Directory         = C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\userdir\var\cache
+  Installation            = C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\bin
+                            C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\etc
+                            C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\extra
+                            C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\java
+                            C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform
+                            C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\testrcp
+                            C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform
   Boot & Ext. Classpath   = 
-  Application Classpath   = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\boot.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-modules.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-util-lookup.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-util-ui.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-util.jar
-  Startup Classpath       = C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\asm-9.9.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\asm-commons-9.9.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\asm-tree-9.9.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\core-base.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\core.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\org-netbeans-libs-asm.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\org-openide-filesystems-compat8.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\org-openide-filesystems.jar;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\testrcp\core\locale\core_testrcp.jar
+  Application Classpath   = C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\boot.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-modules.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-util-lookup.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-util-ui.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\lib\org-openide-util.jar
+  Startup Classpath       = C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\asm-9.9.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\asm-commons-9.9.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\asm-tree-9.9.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\core-base.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\core.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\org-netbeans-libs-asm.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\org-openide-filesystems-compat8.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform\core\org-openide-filesystems.jar;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\testrcp\core\locale\core_testrcp.jar
   Java Boot Modules       = [java.base, java.compiler, java.datatransfer, java.desktop, java.instrument, java.logging, java.management, java.management.rmi, java.naming, java.net.http, java.prefs, java.rmi, java.scripting, java.security.jgss, java.security.sasl, java.smartcardio, java.sql, java.sql.rowset, java.transaction.xa, java.xml, java.xml.crypto, jdk.accessibility, jdk.attach, jdk.charsets, jdk.compiler, jdk.crypto.cryptoki, jdk.crypto.ec, jdk.crypto.mscapi, jdk.dynalink, jdk.editpad, jdk.httpserver, jdk.internal.ed, jdk.internal.jvmstat, jdk.internal.le, jdk.internal.opt, jdk.jartool, jdk.javadoc, jdk.jconsole, jdk.jdeps, jdk.jdi, jdk.jdwp.agent, jdk.jfr, jdk.jlink, jdk.jpackage, jdk.jshell, jdk.jsobject, jdk.jstatd, jdk.localedata, jdk.management, jdk.management.agent, jdk.management.jfr, jdk.naming.dns, jdk.naming.rmi, jdk.net, jdk.nio.mapmode, jdk.random, jdk.sctp, jdk.security.auth, jdk.security.jgss, jdk.unsupported, jdk.unsupported.desktop, jdk.xml.dom, jdk.zipfs]
 -------------------------------------------------------------------------------
 INFO [org.netbeans.core.startup.NbEvents]: Turning on modules:
@@ -97,37 +97,36 @@ INFO [org.netbeans.core.startup.NbEvents]: Turning on modules:
 	org.netbeans.core.nativeaccess/1 [1.61 28-bb4f5c31012229fb1577f019127e203b6925ab33]
 	org.netbeans.core.multitabs/1 [1.42.0.1 1 28-bb4f5c31012229fb1577f019127e203b6925ab33]
 	org.netbeans.core.io.ui/1 [1.60 28-bb4f5c31012229fb1577f019127e203b6925ab33]
-	com.eltherm.test_rcp.branding [1.0 1.0-20260126 202601261418]
-	com.eltherm.maven_test_module [1.0 1.0-20260126 202601261418]
+	com.eltherm.test_rcp.branding [1.0 1.0-20260128 202601281214]
+	com.eltherm.maven_test_module [1.0 1.0-20260128 202601281350]
 INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy resolver: Windows
 INFO [org.netbeans.core.network.proxy.windows.WindowsNetworkProxy]: Windows system proxy resolver: auto detect
 INFO [org.netbeans.core.network.proxy.windows.WindowsNetworkProxy]: Windows system proxy resolver: auto - PAC (http://wpad/wpad.dat)
 INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy reloading succeeded.
 INFO [org.netbeans.ui.metrics.laf]: USG_LOOK_AND_FEEL
-WARNING [org.openide.filesystems.Ordering]: Not all children in Windows2/Modes/explorer/ marked with the position attribute: [NavigatorTopComponent.wstcref], but some are: [favorites.wstcref]
 Diagnostic information
 Input arguments:
 	-Dnetbeans.logger.console=true
 	-ea
-	-Dnetbeans.user.dir=C:\Users\Samir\NetBeansProjects\test_rcp\application
-	-Djdk.home=C:\Users\Samir\.jdks\ms-21.0.8
-	-Dnetbeans.home=C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform
-	-Dnetbeans.user=C:\Users\Samir\NetBeansProjects\test_rcp\application\target\userdir
-	-Dnetbeans.default_userdir_root=C:\Users\Samir\AppData\Roaming\testrcp
+	-Dnetbeans.user.dir=C:\Users\SPulatov\NetBeansProjects\test_rcp\application
+	-Djdk.home=C:\Users\SPulatov\jdk-21.0.9+10
+	-Dnetbeans.home=C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform
+	-Dnetbeans.user=C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\userdir
+	-Dnetbeans.default_userdir_root=C:\Users\SPulatov\AppData\Roaming\testrcp
 	-XX:+HeapDumpOnOutOfMemoryError
-	-XX:HeapDumpPath=C:\Users\Samir\NetBeansProjects\test_rcp\application\target\userdir\var\log\heapdump.hprof
+	-XX:HeapDumpPath=C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\userdir\var\log\heapdump.hprof
 	-Dsun.awt.keepWorkingSetOnMinimize=true
-	-Dnetbeans.dirs=C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\bin;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\etc;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\extra;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\java;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\platform;C:\Users\Samir\NetBeansProjects\test_rcp\application\target\testrcp\testrcp
+	-Dnetbeans.dirs=C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\bin;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\etc;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\extra;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\java;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\platform;C:\Users\SPulatov\NetBeansProjects\test_rcp\application\target\testrcp\testrcp
 	exit
 Compiler: HotSpot 64-Bit Tiered Compilers
-Heap memory usage: initial 252,0MB maximum 4020,0MB
+Heap memory usage: initial 124,0MB maximum 1970,0MB
 Non heap memory usage: initial 7,3MB maximum -1b
 Garbage collector: G1 Young Generation (Collections=3 Total time spent=0s)
 Garbage collector: G1 Concurrent GC (Collections=2 Total time spent=0s)
 Garbage collector: G1 Old Generation (Collections=0 Total time spent=0s)
-Classes: loaded=5842 total loaded=5842 unloaded 0
-INFO [org.netbeans.core.ui.warmup.DiagnosticTask]: Total memory 16.858.472.448
-INFO [null]: Total physical memory 16.858.472.448
+Classes: loaded=5775 total loaded=5775 unloaded 0
+INFO [org.netbeans.core.ui.warmup.DiagnosticTask]: Total memory 8.259.321.856
+INFO [null]: Total physical memory 8.259.321.856
 WARNING [org.openide.filesystems.Ordering]: Not all children in Menu/Window/ marked with the position attribute: [com-eltherm-topcomponents-NavigatorTopComponent.shadow], but some are: [org-netbeans-modules-favorites-View.shadow, org-netbeans-core-io-ui-IOWindowAction.shadow, SwitchToRecentDocumentAction.shadow, Web, Tools, Separator3.instance, ConfigureWindow, org-netbeans-core-windows-actions-ResetWindowsAction.shadow, Separator4.instance, CloseWindowAction.shadow, CloseAllDocumentsAction.shadow, CloseAllButThisAction.shadow, GroupsMenuAction.shadow, DocumentsAction.shadow]
 INFO [org.netbeans.core.network.proxy.ProxyAutoConfig]: PAC script http://wpad/wpad.dat unavailable, proxy disabled
 INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy - mode: auto
