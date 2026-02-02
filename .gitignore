@@ -6,3 +6,5 @@ application/dist/*
 application/logs/*
 application/temp/*
 application/temp/*
+branding/*
+application/*
