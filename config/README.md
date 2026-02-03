@@ -1,4 +1,4 @@
-\# Setup Apache Batik 1.19 for NetBeans RCP Module
+# Setup Apache Batik 1.19 for NetBeans RCP Module
 
 
 
@@ -6,7 +6,7 @@ This guide explains how to configure and use Apache Batik 1.19 in a NetBeans Pla
 
 
 
-\## Step 1 — Install Apache Maven
+## Step 1 — Install Apache Maven
 
 
 
@@ -30,7 +30,7 @@ You should see Maven version and Java version.
 
 
 
-\## Step 2 — Extract Batik JARs
+## Step 2 — Extract Batik JARs
 
 
 
@@ -54,7 +54,7 @@ batik-xml-1.19.jar
 
 
 
-\## Step 3 — Install Batik JARs into Local Maven Repository
+## Step 3 — Install Batik JARs into Local Maven Repository
 
 
 
@@ -78,7 +78,7 @@ mvn install:install-file -Dfile=C:\\Users\\YOUR\_USER\\NetBeansProjects\\test\_r
 
 
 
-\## Step 4 — Update Your Module POM
+## Step 4 — Update Your Module POM
 
 
 
@@ -142,7 +142,7 @@ In your module maven\_test\_module/pom.xml, replace any system scoped dependenci
 
 
 
-\## Step 5 — Build and Verify
+## Step 5 — Build and Verify
 
 
 
@@ -162,7 +162,7 @@ import org.apache.batik.gvt.GraphicsNode;
 
 
 
-\## Step 6 — Optional: Using batik-all.jar
+## Step 6 — Optional: Using batik-all.jar
 
 
 
@@ -194,7 +194,7 @@ mvn install:install-file -Dfile=C:\\Users\\Samir\\NetBeansProjects\\test\_rcp\\l
 
 
 
-\## Notes
+## Notes
 
 
 
