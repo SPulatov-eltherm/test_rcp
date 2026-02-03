@@ -164,7 +164,7 @@ import org.apache.batik.gvt.GraphicsNode;
 
 
 ```console
-mvn install:install-file -Dfile=C:\\Users\\Samir\\NetBeansProjects\\test\_rcp\\libs\\batik\\lib\\batik-all-1.19.jar -DgroupId=org.apache.xmlgraphics -DartifactId=batik-all -Dversion=1.19 -Dpackaging=jar
+mvn install:install-file -Dfile=C:\\Users\\YOUR_USER\\NetBeansProjects\\test\_rcp\\libs\\batik\\lib\\batik-all-1.19.jar -DgroupId=org.apache.xmlgraphics -DartifactId=batik-all -Dversion=1.19 -Dpackaging=jar
 ```
 
 
