@@ -6,7 +6,6 @@ package com.eltherm.services;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.IOException;
 import java.util.List;
@@ -23,10 +22,9 @@ import javax.swing.JPanel;
  */
 public class RepaintService {
     
-    private JPanel navigatorPanel;
-    private JPanel visualBoardPanel;
+    private final JPanel navigatorPanel;
+    private final JPanel visualBoardPanel;
     
-    private String selectedElement;
     
     public RepaintService(JPanel navigatorPanel,JPanel visualBoardPanel) {
         this.navigatorPanel = navigatorPanel;
@@ -35,10 +33,9 @@ public class RepaintService {
     
     
     //list of selected Elements
-    private List<String> selectedElements = new ArrayList<>();
+    private final List<String> selectedElements = new ArrayList<>();
     
     public void onElementSelected(String selected_element) {
-        this.selectedElement = selected_element;
         if(!selectedElements.contains(selected_element)) {
             selectedElements.add(selected_element);
         }
@@ -54,45 +51,22 @@ public class RepaintService {
         //delete old components
         visualBoardPanel.removeAll();
         
-        //remove layout manager
-        visualBoardPanel.setLayout(null);
-        
-        
-        JPanel block1 = createBlock(element);
-        JPanel block2 = createBlock(element);
-        JPanel block3 = createBlock(element);
-        
-        
-        int gap = 5;
+        // Создаем новый блок с выбранным SVG
+        VisualBlockService block = new VisualBlockService(element);
 
-        // размеры блоков
-        int w1 = block1.getWidth();
-        int h1 = block1.getHeight();
+        // Получаем предпочтительный размер блока
+        Dimension d = block.getPreferredSize();
 
-        int w2 = block2.getWidth();
-        int h2 = block2.getHeight();
-        
-        
+        // Центрируем блок на панели
         int panelW = visualBoardPanel.getWidth();
         int panelH = visualBoardPanel.getHeight();
+        int x = (panelW - d.width) / 2;
+        int y = (panelH - d.height) / 2;
 
-        // центрируем всю группу
-        int totalWidth = w1 + gap + w2;
-        int totalHeight = Math.max(h1, h2) + gap + block3.getHeight();
+        block.setBounds(x, y, d.width, d.height);
 
-        int startX = (panelW - totalWidth) / 2;
-        int startY = (panelH - totalHeight) / 2;
-
-        // размещение
-        block1.setBounds(startX, startY, w1, h1);
-        block2.setBounds(startX + w1 + gap, startY - h1 - gap, w2, h2);
-        block3.setBounds(startX + w1 + gap, startY + h1 + gap,
-                block3.getWidth(), block3.getHeight());
-     
-         // добавляем на панель
-        visualBoardPanel.add(block1);
-        visualBoardPanel.add(block2);
-        visualBoardPanel.add(block3);
+        // Добавляем блок на панель
+        visualBoardPanel.add(block);
 
         
         

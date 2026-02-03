@@ -55,7 +55,7 @@ public class UIbuilderService {
                 button.setIcon(new ImageIcon(scaled));
                 
                 //save the element name and pass it to an ActionListener
-                String selected_element = i+".png";
+                String selected_element = Integer.toString(i);
                 //Add actionListener for each button to draw element that has been selected
                 button.addActionListener((ActionEvent e) -> {
                     repaintService.onElementSelected(selected_element);
