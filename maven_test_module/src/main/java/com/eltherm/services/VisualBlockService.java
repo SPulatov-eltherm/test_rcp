@@ -9,14 +9,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
+import javax.swing.SwingUtilities;
 import org.apache.batik.gvt.GraphicsNode;
 
 /**
@@ -34,6 +34,9 @@ public class VisualBlockService extends JPanel {
     private boolean hovered = false; // flag to track mouse hover
         
     final static float dash1[] = {10.0f}; // flag to build dashed stroke
+    
+    private Point dragOffset; // mouse position inside panel when drag starts
+
 
 
     
@@ -51,22 +54,60 @@ public class VisualBlockService extends JPanel {
         // Cache the GraphicsNode for painting
         svgNode = svgIconService.getNode();
         
-        // Add mouse listener to track hover state
-        addMouseListener(new MouseAdapter() {
+        
+        MouseAdapter mouseHandler = new MouseAdapter() {
+
             @Override
             public void mouseEntered(MouseEvent e) {
                 hovered = true;
-                //setBorder(blueLineBorder);
-                repaint(); // repaint panel to show highlight
+                repaint();
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 hovered = false;
-                //setBorder(whiteLineBorder);
-                repaint(); // remove highlight
+                repaint();
             }
-        });
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    // Remember where inside the panel the mouse was pressed
+                    dragOffset = e.getPoint();
+                }
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                if (dragOffset == null) {
+                    return;
+                }
+
+                // Current mouse position on screen
+                Point mouseOnScreen = e.getLocationOnScreen();
+
+                // Parent location on screen
+                Point parentOnScreen = getParent().getLocationOnScreen();
+
+                // Calculate new panel position
+                int newX = mouseOnScreen.x - parentOnScreen.x - dragOffset.x;
+                int newY = mouseOnScreen.y - parentOnScreen.y - dragOffset.y;
+
+                setLocation(newX, newY);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                dragOffset = null;
+            }
+        };
+        
+        
+        addMouseListener(mouseHandler);
+        addMouseMotionListener(mouseHandler);
+        
+        
+        
     }
 
     @Override
@@ -114,10 +155,7 @@ public class VisualBlockService extends JPanel {
         g2.drawRect(1, 1, getWidth() - 3, getHeight() - 3);
 
         // Paint the SVG
-        svgNode.paint(g2);
-        
-        
-        
+        svgNode.paint(g2); 
         g2.dispose();
     }
 }
