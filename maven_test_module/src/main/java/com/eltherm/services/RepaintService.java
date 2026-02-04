@@ -4,9 +4,9 @@
  */
 package com.eltherm.services;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -43,27 +43,16 @@ public class RepaintService {
     
     private void redrawVisualBoard(String element) {
         
-        //delete old components
-        //visualBoardPanel.removeAll();
-        
-       
+     
         visualBoardPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
-
-
-
+        visualBoardPanel.setBackground(Color.white);
         
-        // Создаем новый блок с выбранным SVG
+        // create new block with selected svg
         VisualBlockService block = new VisualBlockService(element);
 
-        // Получаем предпочтительный размер блока
-        Dimension d = block.getPreferredSize();
-
-
-        // Добавляем блок на панель
+        // add block to the main panel
         visualBoardPanel.add(block);
 
-        
-        
         visualBoardPanel.revalidate();
         visualBoardPanel.repaint();
         

@@ -4,11 +4,6 @@
  */
 package com.eltherm.services;
 
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import org.apache.batik.gvt.GraphicsNode;
@@ -91,38 +86,5 @@ public class SvgIconService {
             throw new RuntimeException("Failed to load SVG", e);
         }
         
-    }
-    
-    
-    public BufferedImage svgToImage(SvgIconService svgIcon, int width, int height) {
-
-        Rectangle bounds = svgIcon.getNode().getBounds().getBounds();
-
-        BufferedImage image
-                = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-
-        Graphics2D g2 = image.createGraphics();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-
-        double scaleX = width / (double) bounds.width;
-        double scaleY = height / (double) bounds.height;
-        double scale = Math.min(scaleX, scaleY);
-
-        // ❗ ВАЖНО: сначала translate, потом scale
-        AffineTransform at = new AffineTransform();
-        at.translate(
-                (width - bounds.width * scale) / 2.0,
-                (height - bounds.height * scale) / 2.0
-        );
-        at.scale(scale, scale);
-        at.translate(-bounds.x, -bounds.y);
-
-        g2.transform(at);
-
-        svgIcon.getNode().paint(g2);
-        g2.dispose();
-
-        return image;
     }
 }

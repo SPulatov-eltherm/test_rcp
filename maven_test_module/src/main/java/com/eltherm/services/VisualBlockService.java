@@ -22,74 +22,53 @@ public class VisualBlockService extends JPanel {
 
     private final SvgIconService svgIconService;
     private final GraphicsNode svgNode;
-    
-    private final double SCALE_FACTOR = 3;
+
+    // Optional factor to slightly enlarge the SVG rendering
+    private final double SCALE_FACTOR = 4;
 
     public VisualBlockService(String elementName) {
         setOpaque(true);
         setBackground(Color.WHITE);
-        setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        setPreferredSize(new Dimension(200,200));
-        
+        setPreferredSize(new Dimension(200, 200));
+
+        // Load the SVG using the service
         svgIconService = new SvgIconService();
         svgIconService.loadSvg("/svg/" + elementName + ".svg");
-        
+
+        // Cache the GraphicsNode for painting
         svgNode = svgIconService.getNode();
     }
-    
-    
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if (svgNode == null) {
-            return;
-        }
 
+        if (svgNode == null) {
+            return; // Nothing to draw
+        }
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        // Get the bounding box of the SVG content
         Rectangle2D bounds = svgNode.getBounds();
         if (bounds == null || bounds.getWidth() == 0 || bounds.getHeight() == 0) {
             g2.dispose();
-            return;
+            return; // Avoid division by zero
         }
-        
-        
-        
-        double svgWidth = svgIconService.getSvgWidth();
-        double svgHeight = svgIconService.getSvgHeight();
-        
-         System.out.println("SvgWidth: " + svgWidth);
-        System.out.println("SvgHeight: " + svgHeight);
 
+        // Calculate scale to fit SVG inside panel, optionally enlarge
+        double scaleY = (getHeight() / bounds.getHeight()) * SCALE_FACTOR;
+        double scaleX = scaleY; // Preserve aspect ratio
 
-        System.out.println("Panel size: " + getWidth() + "x" + getHeight());
-        System.out.println("SVG bounds: " + bounds.getWidth() + "x" + bounds.getHeight());
+        // Center the SVG in the panel
+        double tx = (getWidth() - bounds.getWidth() * scaleX) / 2;
+        double ty = (getHeight() - bounds.getHeight() * scaleY) / 2;
 
-        // Рассчитываем масштаб под весь размер панели
-        double scaleY = getHeight() / bounds.getHeight() * SCALE_FACTOR;
-        double scaleX = scaleY;
-       
-        
-        Rectangle2D primitiveBounds = svgNode.getPrimitiveBounds();
-        System.out.println("bounds: " + bounds);
-        System.out.println("primitiveBounds: " + primitiveBounds);
+        g2.translate(tx, ty);        // Move to center
+        g2.scale(scaleX, scaleY);    // Scale SVG
+        g2.translate(-bounds.getX(), -bounds.getY()); // Adjust for SVG offset
 
-        System.out.println("ScaleX: " + scaleX);
-        System.out.println("ScaleY: " + scaleY);
-
-
-        // Центрируем
-        double scaledWidth = bounds.getWidth() * scaleX;
-        double scaledHeight = bounds.getHeight() * scaleY;
-        double tx = (getWidth() - scaledWidth) / 2;
-        double ty = (getHeight() - scaledHeight) / 2;
-
-        g2.translate(tx, ty);
-        g2.scale(scaleX, scaleY);
-        g2.translate(-bounds.getX(), -bounds.getY());
-        
-
+        // Paint the SVG
         svgNode.paint(g2);
         g2.dispose();
     }
