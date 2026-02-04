@@ -4,14 +4,19 @@
  */
 package com.eltherm.services;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import org.apache.batik.gvt.GraphicsNode;
 
 /**
@@ -25,7 +30,15 @@ public class VisualBlockService extends JPanel {
 
     // Optional factor to slightly enlarge the SVG rendering
     private final double SCALE_FACTOR = 4;
+    
+    private boolean hovered = false; // flag to track mouse hover
+        
+    final static float dash1[] = {10.0f}; // flag to build dashed stroke
 
+
+    
+    
+    
     public VisualBlockService(String elementName) {
         setOpaque(true);
         setBackground(Color.WHITE);
@@ -37,6 +50,23 @@ public class VisualBlockService extends JPanel {
 
         // Cache the GraphicsNode for painting
         svgNode = svgIconService.getNode();
+        
+        // Add mouse listener to track hover state
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                hovered = true;
+                //setBorder(blueLineBorder);
+                repaint(); // repaint panel to show highlight
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                hovered = false;
+                //setBorder(whiteLineBorder);
+                repaint(); // remove highlight
+            }
+        });
     }
 
     @Override
@@ -64,12 +94,30 @@ public class VisualBlockService extends JPanel {
         double tx = (getWidth() - bounds.getWidth() * scaleX) / 2;
         double ty = (getHeight() - bounds.getHeight() * scaleY) / 2;
 
-        g2.translate(tx, ty);        // Move to center
-        g2.scale(scaleX, scaleY);    // Scale SVG
-        g2.translate(-bounds.getX(), -bounds.getY()); // Adjust for SVG offset
+        AffineTransform oldTransform = g2.getTransform();
+
+        /* ==== SVG DRAWING ==== */
+        g2.translate(tx, ty);
+        g2.scale(scaleX, scaleY);
+        g2.translate(-bounds.getX(), -bounds.getY());
+        svgNode.paint(g2);
+
+        /* ==== RESET TRANSFORM ==== */
+        g2.setTransform(oldTransform);
+
+        /* ==== BORDER DRAWING ==== */
+        g2.setColor(hovered ? new Color(37, 150, 190) : Color.white);
+        g2.setStroke(new BasicStroke(1.0f,
+                BasicStroke.CAP_BUTT,
+                BasicStroke.JOIN_MITER,
+                10.0f, dash1, 0.0f));
+        g2.drawRect(1, 1, getWidth() - 3, getHeight() - 3);
 
         // Paint the SVG
         svgNode.paint(g2);
+        
+        
+        
         g2.dispose();
     }
 }
