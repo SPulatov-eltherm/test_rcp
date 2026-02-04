@@ -8,11 +8,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import org.apache.batik.gvt.GraphicsNode;
 
 /**
  *
@@ -20,66 +20,77 @@ import javax.swing.JPanel;
  */
 public class VisualBlockService extends JPanel {
 
-    private static final int SIZE = 200;     // base panel size
-    private static final int PADDING = 6;    // padding around the SVG
-    private static final double SCALE_FACTOR = 2.0; // scale the image by 2x
-
-    private final SvgIconService icon;
+    private final SvgIconService svgIconService;
+    private final GraphicsNode svgNode;
+    
+    private final double SCALE_FACTOR = 3;
 
     public VisualBlockService(String elementName) {
-        // Load SVG using SvgIconService
-        this.icon = new SvgIconService("/svg/" + elementName + ".svg");
-
-        //Optional: make the panel visible with background and border
         setOpaque(true);
         setBackground(Color.WHITE);
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
-         
-        // Get the bounding rectangle of the SVG
-        Rectangle bounds = icon.getNode().getBounds().getBounds();
-
-        // Compute panel size based on SVG size and scale factor, plus padding
-        int width = (int) Math.round(bounds.width) + PADDING * 2;
-        int height = (int) Math.round(bounds.height) + PADDING * 2;
-
-        // Set preferred size and size so that layout managers or null layout know the size
-        setPreferredSize(new Dimension(width, height));
-        setSize(width, height);
+        setPreferredSize(new Dimension(200,200));
+        
+        svgIconService = new SvgIconService();
+        svgIconService.loadSvg("/svg/" + elementName + ".svg");
+        
+        svgNode = svgIconService.getNode();
     }
-
+    
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        if (svgNode == null) {
+            return;
+        }
 
-        // Create a copy of Graphics2D for safe rendering
         Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        int w = getWidth() - PADDING * 2; // available width inside panel
-        int h = getHeight() - PADDING * 2; // available height inside panel
+        Rectangle2D bounds = svgNode.getBounds();
+        if (bounds == null || bounds.getWidth() == 0 || bounds.getHeight() == 0) {
+            g2.dispose();
+            return;
+        }
+        
+        
+        
+        double svgWidth = svgIconService.getSvgWidth();
+        double svgHeight = svgIconService.getSvgHeight();
+        
+         System.out.println("SvgWidth: " + svgWidth);
+        System.out.println("SvgHeight: " + svgHeight);
 
-        // Get SVG bounds again
-        Rectangle bounds = icon.getNode().getBounds().getBounds();
 
-        // Scale SVG to 2x, preserving proportions
-        double scaleY = (h / (double) bounds.height) * SCALE_FACTOR;
-        double scaleX = scaleY; // keep aspect ratio
+        System.out.println("Panel size: " + getWidth() + "x" + getHeight());
+        System.out.println("SVG bounds: " + bounds.getWidth() + "x" + bounds.getHeight());
 
-        // Compute offset to center SVG inside the panel
-        double offsetX = (w - bounds.width * scaleX) / 2.0;
-        double offsetY = (h - bounds.height * scaleY) / 2.0;
+        // Рассчитываем масштаб под весь размер панели
+        double scaleY = getHeight() / bounds.getHeight() * SCALE_FACTOR;
+        double scaleX = scaleY;
+       
+        
+        Rectangle2D primitiveBounds = svgNode.getPrimitiveBounds();
+        System.out.println("bounds: " + bounds);
+        System.out.println("primitiveBounds: " + primitiveBounds);
 
-        // Apply translation and scaling transform
-        AffineTransform at = new AffineTransform();
-        at.translate(PADDING + offsetX, PADDING + offsetY);
-        at.scale(scaleX, scaleY);
+        System.out.println("ScaleX: " + scaleX);
+        System.out.println("ScaleY: " + scaleY);
 
-        g2.transform(at);
 
-        // Paint the SVG onto the panel
-        icon.getNode().paint(g2);
+        // Центрируем
+        double scaledWidth = bounds.getWidth() * scaleX;
+        double scaledHeight = bounds.getHeight() * scaleY;
+        double tx = (getWidth() - scaledWidth) / 2;
+        double ty = (getHeight() - scaledHeight) / 2;
 
-        g2.dispose(); // clean up Graphics2D
+        g2.translate(tx, ty);
+        g2.scale(scaleX, scaleY);
+        g2.translate(-bounds.getX(), -bounds.getY());
+        
+
+        svgNode.paint(g2);
+        g2.dispose();
     }
 }

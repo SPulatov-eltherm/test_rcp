@@ -4,16 +4,11 @@
  */
 package com.eltherm.services;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
-import java.io.IOException;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.util.List;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -49,7 +44,13 @@ public class RepaintService {
     private void redrawVisualBoard(String element) {
         
         //delete old components
-        visualBoardPanel.removeAll();
+        //visualBoardPanel.removeAll();
+        
+       
+        visualBoardPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+
+
+
         
         // Создаем новый блок с выбранным SVG
         VisualBlockService block = new VisualBlockService(element);
@@ -57,13 +58,6 @@ public class RepaintService {
         // Получаем предпочтительный размер блока
         Dimension d = block.getPreferredSize();
 
-        // Центрируем блок на панели
-        int panelW = visualBoardPanel.getWidth();
-        int panelH = visualBoardPanel.getHeight();
-        int x = (panelW - d.width) / 2;
-        int y = (panelH - d.height) / 2;
-
-        block.setBounds(x, y, d.width, d.height);
 
         // Добавляем блок на панель
         visualBoardPanel.add(block);
@@ -73,51 +67,6 @@ public class RepaintService {
         visualBoardPanel.revalidate();
         visualBoardPanel.repaint();
         
-    }
-    
-    
-    private JPanel createBlock(String name) {
-        
-        //default padding for blocks
-        int padding = 5;
-        
-        JPanel panel = new JPanel(null);
-        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        
-        //set image Height and Width to 0 by default
-        int imgW = 0;
-        int imgH = 0;
-        
-        //default label for block
-        JLabel imageLabel = new JLabel("Kein Bild");
-        
-        
-        try {
-            Image img = ImageIO.read(
-                    getClass().getResource("/images/"+name)
-            );
-            
-            ImageIcon icon = new ImageIcon(img);
-            imgW = icon.getIconWidth();
-            imgH = icon.getIconHeight();
-            imageLabel = new JLabel(icon);
-            imageLabel.setBounds(
-                padding,
-                padding,
-                imgW,
-                imgH
-            );    
-        } catch(IOException e) {
-            System.out.println("Das Bild wurde nicht gefunden " + e);
-        }
-        
-        int blockW = imgW + padding * 2;
-        int blockH = imgH + padding * 2;
-        
-        panel.setSize(blockW,blockH);
-        panel.add(imageLabel);
-
-        return panel;
-    }
+    }  
 }
     
