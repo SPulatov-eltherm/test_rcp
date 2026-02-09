@@ -64,7 +64,7 @@ public final class Eltherm_VisualBoardTopComponent extends TopComponent {
         
         //build symbole_panel via uibuilder
         uibuilder = new UIbuilderService(repaintService);
-        uibuilder.build_symbole_panel(navigator_panel);
+        uibuilder.build_navigator_panel(navigator_panel);
         uibuilder.build_visual_board_panel(visual_board_panel);
         
         //set BorderLayout as main layout

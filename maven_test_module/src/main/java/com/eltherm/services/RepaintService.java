@@ -7,10 +7,17 @@ package com.eltherm.services;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -23,6 +30,8 @@ public class RepaintService {
     private final JPanel visualBoardPanel;
     
     
+    
+    
     public RepaintService(JPanel navigatorPanel,JPanel visualBoardPanel) {
         this.navigatorPanel = navigatorPanel;
         this.visualBoardPanel = visualBoardPanel;
@@ -32,6 +41,8 @@ public class RepaintService {
     //list of selected Elements
     private final List<String> selectedElements = new ArrayList<>();
     
+    
+    //selected_element is an index of element that user has selected. That is 1 or 2 and etc.
     public void onElementSelected(String selected_element) {
         if(!selectedElements.contains(selected_element)) {
             selectedElements.add(selected_element);
@@ -40,7 +51,61 @@ public class RepaintService {
         //redraw visual board
         redrawVisualBoard(selected_element);
         
+        //redraw navigator panel 
+        redrawNavigatorPanel(selected_element);
+        
     }
+    
+    
+    private void redrawNavigatorPanel(String element) {
+        
+        navigatorPanel.removeAll();
+        
+        // get list of an elements that are could be used with previous selected one
+        List<String> possible_combos = switch (element) {
+            case "1", "2","3","4","5","6","7","8" -> { yield List.of("9","10","11"); }
+            case "9", "10", "11" -> { yield List.of("1", "2","3","4","5","6","7","8"); }
+            default ->  {yield List.of("");}
+        };
+        
+        int length = possible_combos.size();
+        int cols = 2;
+        int rows = (int) Math.ceil((double) length / cols);
+        
+        navigatorPanel.setLayout(new GridLayout(rows,cols,5,5));
+        
+        for(int i = 0; i < length; i++) {
+            
+            String index = possible_combos.get(i);
+            
+            //Create button for each element and place it in button as an icon
+            JButton button = new JButton();
+            try {
+                Image img = ImageIO.read(
+                        getClass().getResource("/images/" + index + ".png")
+                );
+
+                Image scaled = img.getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+                button.setIcon(new ImageIcon(scaled));
+
+                //save the element name and pass it to an ActionListener
+                String selected_element = index;
+                //Add actionListener for each button to draw element that has been selected
+                button.addActionListener((ActionEvent e) -> {
+                    this.onElementSelected(selected_element);
+                });
+                navigatorPanel.add(button);
+            } catch (IOException e) {
+                System.out.println("Das Bild wurde nicht gefunden " + index);
+            }
+        }
+        
+        
+        navigatorPanel.revalidate();
+        navigatorPanel.repaint();
+    }
+    
+    
     
     
     private void redrawVisualBoard(String element) {

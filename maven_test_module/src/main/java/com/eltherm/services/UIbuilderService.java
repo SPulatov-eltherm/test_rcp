@@ -38,7 +38,7 @@ public class UIbuilderService {
     }
     
     
-    public void build_symbole_panel(JPanel panel){
+    public void build_navigator_panel(JPanel panel){
         panel.setBorder(border);
         
         //set Gridlayout for 8 elements
