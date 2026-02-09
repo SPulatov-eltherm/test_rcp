@@ -37,6 +37,11 @@ public class ToolsService {
         handleAction();
     }
     
+    
+    public Mode getMode() {
+        return currentMode;
+    }
+    
     public void setToolsButtonList(List<JButton> toolButtons) {
         this.toolButtons = toolButtons;
     }

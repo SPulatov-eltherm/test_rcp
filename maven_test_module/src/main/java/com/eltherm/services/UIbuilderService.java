@@ -12,6 +12,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Path2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,10 @@ public class UIbuilderService {
     //Compound Border for both panels;
     private final CompoundBorder border;
     
+    
+    private List<Path2D> lines = new ArrayList<>();
+    private Path2D currentLine;
+    
     public UIbuilderService(RepaintService repaintService,ToolsService toolsService) {
         this.repaintService = repaintService;
         this.toolsService = toolsService;
@@ -53,6 +58,7 @@ public class UIbuilderService {
     }
     
     
+    //function to build navigator panel(left side)
     public void build_navigator_panel(JPanel panel){
         panel.setBorder(border);
         
@@ -79,10 +85,14 @@ public class UIbuilderService {
             } catch (IOException e) {
                 System.out.println("Das Bild wurde nicht gefunden " + i);
             }
-        }  
+        }
     }
     
+    //function to build visual board panel(right side)
     public void build_visual_board_panel(JPanel panel) {
+        
+        
+        
         panel.setLayout(null);
         panel.setBorder(border);
         
@@ -115,10 +125,60 @@ public class UIbuilderService {
                 positionToolButtons(panel, clearBtn, drawBtn, shapeBtn);
             }
         });
+        
+        
+        
+        List<Path2D> lines = new ArrayList<>();
+        final Path2D[] currentLine = {null};
+        
+        MouseAdapter drawHandler = new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (toolsService.getMode() == ToolsService.Mode.DRAW_ON) {
+                    currentLine[0] = new Path2D.Double();
+                    currentLine[0].moveTo(e.getX(), e.getY());
+                    panel.repaint();
+                }
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                if (toolsService.getMode() == ToolsService.Mode.DRAW_ON && currentLine[0] != null) {
+                    currentLine[0].lineTo(e.getX(), e.getY());
+                    panel.repaint();
+                }
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (toolsService.getMode() == ToolsService.Mode.DRAW_ON && currentLine[0] != null) {
+                    lines.add(currentLine[0]);
+                    currentLine[0] = null;
+                    panel.repaint();
+                }
+            }
+        };
+        
+        panel.addMouseListener(drawHandler);
+        panel.addMouseMotionListener(drawHandler);
+        
+        
+        // ===== 3. Подключаем кнопку Clear =====
+        clearBtn.addActionListener(e -> {
+            lines.clear();
+            panel.repaint();
+        });
+        
+        
+        
+        
+        
     }
     
     
     
+    //function to position tool buttons top right to the visual board panel
     private void positionToolButtons(JPanel panel, JButton clearBtn, JButton drawBtn, JButton shapeBtn) {
         int btnSize = 28;
         int gap = 6;
@@ -131,7 +191,7 @@ public class UIbuilderService {
     }
     
     
-    
+    //function to create compound border for both panels
     private CompoundBorder createBorder() { 
         //create border with some padding 
         Border raised = BorderFactory.createRaisedBevelBorder();
@@ -146,6 +206,7 @@ public class UIbuilderService {
     
     
     
+    //function to create buttons with icons for tools like clear,draw and shapes
     private JButton createOverlayButton(String iconName, String tooltip) {
 
         JButton btn = new JButton();

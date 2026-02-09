@@ -38,7 +38,8 @@ public class VisualBlockService extends JPanel {
     private Point dragOffset; // mouse position inside panel when drag starts
 
 
-
+    
+    
     
     
     
@@ -126,10 +127,17 @@ public class VisualBlockService extends JPanel {
             g2.dispose();
             return; // Avoid division by zero
         }
+        
+        System.out.println("Bounds width: "+bounds.getWidth());
+        System.out.println("Bounds height: "+bounds.getHeight());
+
 
         // Calculate scale to fit SVG inside panel, optionally enlarge
         double scaleY = (getHeight() / bounds.getHeight()) * SCALE_FACTOR;
         double scaleX = scaleY; // Preserve aspect ratio
+        
+        System.out.println("ScaleX " + scaleX);
+        
 
         // Center the SVG in the panel
         double tx = (getWidth() - bounds.getWidth() * scaleX) / 2;
