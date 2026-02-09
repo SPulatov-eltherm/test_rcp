@@ -5,6 +5,7 @@
 package com.eltherm.topcomponents;
 
 import com.eltherm.services.RepaintService;
+import com.eltherm.services.ToolsService;
 import com.eltherm.services.UIbuilderService;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
@@ -47,6 +48,7 @@ public final class Eltherm_VisualBoardTopComponent extends TopComponent {
             
     private final UIbuilderService uibuilder;
     private final RepaintService repaintService;
+    private final ToolsService toolsService;
     
     public Eltherm_VisualBoardTopComponent() {
         initComponents();
@@ -62,8 +64,10 @@ public final class Eltherm_VisualBoardTopComponent extends TopComponent {
         
         repaintService = new RepaintService(navigator_panel, visual_board_panel);
         
+        toolsService = new ToolsService(visual_board_panel);
+        
         //build symbole_panel via uibuilder
-        uibuilder = new UIbuilderService(repaintService);
+        uibuilder = new UIbuilderService(repaintService,toolsService);
         uibuilder.build_navigator_panel(navigator_panel);
         uibuilder.build_visual_board_panel(visual_board_panel);
         

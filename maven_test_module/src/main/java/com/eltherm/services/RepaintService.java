@@ -31,7 +31,7 @@ public class RepaintService {
     
     
     
-    
+    //constructor to redraw navigator and visualboard panels
     public RepaintService(JPanel navigatorPanel,JPanel visualBoardPanel) {
         this.navigatorPanel = navigatorPanel;
         this.visualBoardPanel = visualBoardPanel;
@@ -58,76 +58,82 @@ public class RepaintService {
     
     
     private void redrawNavigatorPanel(String element) {
-        
-        navigatorPanel.removeAll();
-        
-        // get list of an elements that are could be used with previous selected one
-        List<String> possible_combos = switch (element) {
-            case "1", "2","3","4","5","6","7","8" -> { yield List.of("9","10","11"); }
-            case "9", "10", "11" -> { yield List.of("1", "2","3","4","5","6","7","8"); }
-            default ->  {yield List.of("");}
-        };
-        
-        int length = possible_combos.size();
-        int cols = 2;
-        int rows = (int) Math.ceil((double) length / cols);
-        
-        navigatorPanel.setLayout(new GridLayout(rows,cols,5,5));
-        
-        for(int i = 0; i < length; i++) {
-            
-            String index = possible_combos.get(i);
-            
-            //Create button for each element and place it in button as an icon
-            JButton button = new JButton();
-            try {
-                Image img = ImageIO.read(
-                        getClass().getResource("/images/" + index + ".png")
-                );
+        if(navigatorPanel != null) {
+            navigatorPanel.removeAll();
 
-                Image scaled = img.getScaledInstance(150, 100, Image.SCALE_SMOOTH);
-                button.setIcon(new ImageIcon(scaled));
+            // get list of an elements that are could be used with previous selected one
+            List<String> possible_combos = switch (element) {
+                case "1", "2", "3", "4", "5", "6", "7", "8" -> {
+                    yield List.of("9", "10", "11");
+                }
+                case "9", "10", "11" -> {
+                    yield List.of("1", "2", "3", "4", "5", "6", "7", "8");
+                }
+                default -> {
+                    yield List.of("");
+                }
+            };
 
-                //save the element name and pass it to an ActionListener
-                String selected_element = index;
-                //Add actionListener for each button to draw element that has been selected
-                button.addActionListener((ActionEvent e) -> {
-                    this.onElementSelected(selected_element);
-                });
-                navigatorPanel.add(button);
-            } catch (IOException e) {
-                System.out.println("Das Bild wurde nicht gefunden " + index);
+            int length = possible_combos.size();
+            int cols = 2;
+            int rows = (int) Math.ceil((double) length / cols);
+
+            navigatorPanel.setLayout(new GridLayout(rows, cols, 5, 5));
+
+            for (int i = 0; i < length; i++) {
+
+                String index = possible_combos.get(i);
+
+                //Create button for each element and place it in button as an icon
+                JButton button = new JButton();
+                try {
+                    Image img = ImageIO.read(
+                            getClass().getResource("/images/" + index + ".png")
+                    );
+
+                    Image scaled = img.getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+                    button.setIcon(new ImageIcon(scaled));
+
+                    //save the element name and pass it to an ActionListener
+                    String selected_element = index;
+                    //Add actionListener for each button to draw element that has been selected
+                    button.addActionListener((ActionEvent e) -> {
+                        this.onElementSelected(selected_element);
+                    });
+                    navigatorPanel.add(button);
+                } catch (IOException e) {
+                    System.out.println("Das Bild wurde nicht gefunden " + index);
+                }
             }
-        }
-        
-        
-        navigatorPanel.revalidate();
-        navigatorPanel.repaint();
+
+            navigatorPanel.revalidate();
+            navigatorPanel.repaint();
+        }  
     }
     
     
     
     
     private void redrawVisualBoard(String element) {
-        
-        visualBoardPanel.setLayout(null);   
-        visualBoardPanel.setBackground(Color.white);
-         
-        // create new block with selected svg
-        VisualBlockService block = new VisualBlockService(element);
-        
-        Dimension size = block.getPreferredSize();
+        if(visualBoardPanel != null) {
+            visualBoardPanel.setLayout(null);
+            visualBoardPanel.setBackground(Color.white);
 
-        Point p = findFreePosition(size);
+            // create new block with selected svg
+            VisualBlockService block = new VisualBlockService(element);
 
-        block.setBounds(p.x, p.y, size.width, size.height);
+            Dimension size = block.getPreferredSize();
 
-        // add block to the main panel
-        visualBoardPanel.add(block);
+            Point p = findFreePosition(size);
 
-        visualBoardPanel.revalidate();
-        visualBoardPanel.repaint();
-        
+            block.setBounds(p.x, p.y, size.width, size.height);
+
+            // add block to the main panel
+            visualBoardPanel.add(block);
+
+            visualBoardPanel.revalidate();
+            visualBoardPanel.repaint();
+        } 
     }  
     
     

@@ -29,7 +29,7 @@ public class VisualBlockService extends JPanel {
     private final GraphicsNode svgNode;
 
     // Optional factor to slightly enlarge the SVG rendering
-    private final double SCALE_FACTOR = 4;
+    private final double SCALE_FACTOR = 3;
     
     private boolean hovered = false; // flag to track mouse hover
         
@@ -45,7 +45,7 @@ public class VisualBlockService extends JPanel {
     public VisualBlockService(String elementName) {
         setOpaque(true);
         setBackground(Color.WHITE);
-        setPreferredSize(new Dimension(200, 200));
+        setPreferredSize(new Dimension(250, 250));
 
         // Load the SVG using the service
         svgIconService = new SvgIconService();

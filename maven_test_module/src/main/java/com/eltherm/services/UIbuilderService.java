@@ -4,18 +4,17 @@
  */
 package com.eltherm.services;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -35,11 +34,21 @@ public class UIbuilderService {
     //service used to repaint visualboard and navigator panel
     private final RepaintService repaintService;
     
+    //service used to handle actions based on button user has clicked (clear,draw,shapes)
+    private final ToolsService toolsService;
+    
+    //List of buttons to redraw
+    private final List<JButton> toolButtons = new ArrayList<>();
+   
+    //flag to add or remove blue blackground from buttons 
+    private boolean clicked = false;
+    
     //Compound Border for both panels;
     private final CompoundBorder border;
     
-    public UIbuilderService(RepaintService repaintService) {
+    public UIbuilderService(RepaintService repaintService,ToolsService toolsService) {
         this.repaintService = repaintService;
+        this.toolsService = toolsService;
         this.border = createBorder();
     }
     
@@ -74,17 +83,23 @@ public class UIbuilderService {
     }
     
     public void build_visual_board_panel(JPanel panel) {
-        //panel.setLayout(new BorderLayout());
         panel.setLayout(null);
         panel.setBorder(border);
         
-        JButton clearBtn = createOverlayButton("clear.png", "Очистить");
-        JButton drawBtn = createOverlayButton("pencil.png", "Карандаш");
-        JButton shapeBtn = createOverlayButton("shapes.png", "Фигуры");
+        JButton clearBtn = createOverlayButton("clear.png", "Clear");
+        JButton drawBtn = createOverlayButton("pencil.png", "Draw");
+        JButton shapeBtn = createOverlayButton("shapes.png", "Shapes");
        
         panel.add(clearBtn);
         panel.add(drawBtn);
         panel.add(shapeBtn);
+        
+        //add buttons to toolButtons list to redraw them when user chooses to clear panel
+        toolButtons.clear();
+        toolButtons.add(clearBtn);
+        toolButtons.add(drawBtn);
+        toolButtons.add(shapeBtn);
+        toolsService.setToolsButtonList(toolButtons);
         
         
         
@@ -149,26 +164,49 @@ public class UIbuilderService {
         } catch (IOException e) {
             btn.setText("?");
         }
-
-       
-        btn.addMouseListener(new MouseAdapter() {
-            /*   @Override
-            public void mouseEntered(MouseEvent e) {
-            btn.setContentAreaFilled(true);
-            btn.setBackground(new Color(220, 220, 220));
+    
+        
+        //Add actionListener for each button to perform action
+        String toolTipText = btn.getToolTipText();
+        
+        //change bg for all buttons except clear button
+        if(!toolTipText.equals("Clear")) {
+            btn.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (!clicked) {
+                        btn.setBackground(new Color(14, 119, 230));
+                        clicked = true;
+                    } else {
+                        btn.setBackground(Color.white);
+                        clicked = false;
+                    }
+                }
+            });
+        }
+        
+        
+        
+        switch(toolTipText) {
+            case "Clear" -> {
+                btn.addActionListener((ActionEvent e) -> {
+                    toolsService.setMode(ToolsService.Mode.CLEAR_ON);
+                });
             }
-            
-            @Override
-            public void mouseExited(MouseEvent e) {
-            //btn.setContentAreaFilled(false);
-            }*/
-            
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                btn.setBackground(new Color(14, 119, 230));
+            case "Draw" -> {
+                btn.addActionListener((ActionEvent e) -> {
+                    toolsService.setMode(ToolsService.Mode.DRAW_ON);
+                });
             }
-        });
-
+            case "Shapes" -> {
+                btn.addActionListener((ActionEvent e) -> {
+                    toolsService.setMode(ToolsService.Mode.SHAPES_ON);
+                });
+            }
+        }
+        
+        
+        
         return btn;
     }
 
