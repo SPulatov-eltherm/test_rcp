@@ -7,6 +7,7 @@ package com.eltherm.services;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -20,10 +21,12 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
+import org.openide.windows.WindowManager;
 
 /**
  *
@@ -169,11 +172,6 @@ public class UIbuilderService {
             lines.clear();
             panel.repaint();
         });
-        
-        
-        
-        
-        
     }
     
     
@@ -214,7 +212,7 @@ public class UIbuilderService {
 
         btn.setFocusPainted(false);
         btn.setBorderPainted(true);
-        btn.setContentAreaFilled(false);
+        btn.setContentAreaFilled(true);
         btn.setOpaque(true);
 
         try {
@@ -235,7 +233,9 @@ public class UIbuilderService {
             btn.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    System.out.println("MouseClicked called");
                     if (!clicked) {
+                        System.out.println("set blue background");
                         btn.setBackground(new Color(14, 119, 230));
                         clicked = true;
                     } else {
@@ -244,16 +244,16 @@ public class UIbuilderService {
                     }
                 }
             });
+        } 
+        //else if it is clear button then ask user for permission to clear panel
+        else {
+           btn.addActionListener((ActionEvent e) -> {
+               askForPermission();
+           });
         }
         
-        
-        
+        //peform action based on button 
         switch(toolTipText) {
-            case "Clear" -> {
-                btn.addActionListener((ActionEvent e) -> {
-                    toolsService.setMode(ToolsService.Mode.CLEAR_ON);
-                });
-            }
             case "Draw" -> {
                 btn.addActionListener((ActionEvent e) -> {
                     toolsService.setMode(ToolsService.Mode.DRAW_ON);
@@ -269,6 +269,25 @@ public class UIbuilderService {
         
         
         return btn;
+    }
+    
+    
+    //function to ask user for perfimission before deleting components
+    private void askForPermission() {
+        Window  mainWindow = WindowManager.getDefault().getMainWindow();
+        
+        int result = JOptionPane.showConfirmDialog(
+                mainWindow,
+                "Möchten Sie wirklich alle Komponenten löschen?",
+                "Bestätigung erforderlich",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+        
+        if(result == JOptionPane.YES_OPTION) {
+            toolsService.setMode(ToolsService.Mode.CLEAR_ON);
+        }
+    
     }
 
 }
