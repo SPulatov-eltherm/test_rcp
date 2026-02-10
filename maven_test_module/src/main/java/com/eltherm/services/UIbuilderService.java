@@ -11,9 +11,6 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.geom.Path2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -125,7 +122,7 @@ public class UIbuilderService {
     
     //function to position tool buttons top right to the visual board panel
     private void positionToolButtons(JPanel panel, JButton clearBtn, JButton drawBtn, JButton shapeBtn) {
-        int btnSize = 28;
+        int btnSize = 30;
         int gap = 6;
         int x = panel.getWidth() - btnSize - 10;
         int y = 10;
@@ -165,7 +162,7 @@ public class UIbuilderService {
         try {
             Image img = ImageIO.read(
                 getClass().getResource("/icons/" + iconName));
-            Image scaled = img.getScaledInstance(28, 28, Image.SCALE_SMOOTH);
+            Image scaled = img.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
             btn.setIcon(new ImageIcon(scaled));
         } catch (IOException e) {
             btn.setText("?");
@@ -173,37 +170,31 @@ public class UIbuilderService {
     
         
         //Add actionListener for each button to perform action
-        String toolTipText = btn.getToolTipText();
-        
-        //change bg for all buttons except clear button
-        if(!toolTipText.equals("Clear")) {
-            btn.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    System.out.println("MouseClicked called");
-                    if (!clicked) {
-                        System.out.println("set blue background");
-                        btn.setBackground(new Color(14, 119, 230));
-                        clicked = true;
-                    } else {
-                        btn.setBackground(Color.white);
-                        clicked = false;
-                    }
-                }
-            });
-        } 
-        //else if it is clear button then ask user for permission to clear panel
-        else {
-           btn.addActionListener((ActionEvent e) -> {
-               askForPermission();
-           });
-        }
-        
+        String toolTipText = btn.getToolTipText(); 
         //peform action based on button 
         switch(toolTipText) {
-            case "Draw" -> {
+            
+            case "Clear" -> {
                 btn.addActionListener((ActionEvent e) -> {
-                    toolsService.setMode(ToolsService.Mode.DRAW_ON);
+                    askForPermission();
+                });
+            }
+            
+            
+            case "Draw" -> {
+                // turn on or off drawing functionality based on clicking
+                btn.addActionListener((ActionEvent e) -> {
+                    clicked = !clicked;
+
+                    btn.setBackground(
+                            clicked ? new Color(14, 119, 230) : Color.WHITE
+                    );
+
+                    if (clicked) {
+                        toolsService.setMode(ToolsService.Mode.DRAW_ON);
+                    } else {
+                        toolsService.setMode(ToolsService.Mode.DRAW_OFF);
+                    }
                 });
             }
             case "Shapes" -> {

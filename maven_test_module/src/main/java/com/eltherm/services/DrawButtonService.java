@@ -17,4 +17,8 @@ public class DrawButtonService {
         panel.setMouseListenerAndMouseMotionListener();
     }
     
+    public void disableDrawing(DrawPanel panel) {
+        panel.removeMouseListenerAndMouseMotionListener();
+    }
+    
 }

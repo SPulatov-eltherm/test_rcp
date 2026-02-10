@@ -6,7 +6,6 @@ package com.eltherm.services;
 
 import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 
 /**
  *
@@ -63,6 +62,9 @@ public class ToolsService {
             }
             case DRAW_ON -> {
                 drawButtonService.enableDrawing(visualBoardPanel);
+            }
+            case DRAW_OFF -> {
+                drawButtonService.disableDrawing(visualBoardPanel);
             }
         }
       

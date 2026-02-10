@@ -44,8 +44,7 @@ public class VisualBlockService extends JPanel {
     
     
     public VisualBlockService(String elementName) {
-        setOpaque(true);
-        setBackground(Color.WHITE);
+        setOpaque(false);
         setPreferredSize(new Dimension(250, 250));
 
         // Load the SVG using the service

@@ -68,6 +68,11 @@ public class DrawPanel extends JPanel {
     }
     
     
+    public void removeMouseListenerAndMouseMotionListener(){
+        removeMouseListener(mouseHandler);
+        removeMouseMotionListener(mouseHandler);
+    }
+    
     
     @Override 
     protected void paintComponent(Graphics g) {
