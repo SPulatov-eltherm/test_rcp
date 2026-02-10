@@ -50,10 +50,6 @@ public class UIbuilderService {
     //Compound Border for both panels;
     private final CompoundBorder border;
     
-    
-    private List<Path2D> lines = new ArrayList<>();
-    private Path2D currentLine;
-    
     public UIbuilderService(RepaintService repaintService,ToolsService toolsService) {
         this.repaintService = repaintService;
         this.toolsService = toolsService;
@@ -93,9 +89,6 @@ public class UIbuilderService {
     
     //function to build visual board panel(right side)
     public void build_visual_board_panel(JPanel panel) {
-        
-        
-        
         panel.setLayout(null);
         panel.setBorder(border);
         
@@ -127,54 +120,8 @@ public class UIbuilderService {
             public void componentResized(ComponentEvent e) {
                 positionToolButtons(panel, clearBtn, drawBtn, shapeBtn);
             }
-        });
-        
-        
-        
-        List<Path2D> lines = new ArrayList<>();
-        final Path2D[] currentLine = {null};
-        
-        MouseAdapter drawHandler = new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (toolsService.getMode() == ToolsService.Mode.DRAW_ON) {
-                    currentLine[0] = new Path2D.Double();
-                    currentLine[0].moveTo(e.getX(), e.getY());
-                    panel.repaint();
-                }
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                if (toolsService.getMode() == ToolsService.Mode.DRAW_ON && currentLine[0] != null) {
-                    currentLine[0].lineTo(e.getX(), e.getY());
-                    panel.repaint();
-                }
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                if (toolsService.getMode() == ToolsService.Mode.DRAW_ON && currentLine[0] != null) {
-                    lines.add(currentLine[0]);
-                    currentLine[0] = null;
-                    panel.repaint();
-                }
-            }
-        };
-        
-        panel.addMouseListener(drawHandler);
-        panel.addMouseMotionListener(drawHandler);
-        
-        
-        // ===== 3. Подключаем кнопку Clear =====
-        clearBtn.addActionListener(e -> {
-            lines.clear();
-            panel.repaint();
-        });
+        }); 
     }
-    
-    
     
     //function to position tool buttons top right to the visual board panel
     private void positionToolButtons(JPanel panel, JButton clearBtn, JButton drawBtn, JButton shapeBtn) {
@@ -265,9 +212,6 @@ public class UIbuilderService {
                 });
             }
         }
-        
-        
-        
         return btn;
     }
     

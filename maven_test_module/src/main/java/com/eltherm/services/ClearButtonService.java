@@ -7,7 +7,7 @@ package com.eltherm.services;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JPanel;
+
 
 /**
  *
@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 public class ClearButtonService {
     
     
-    public void clearPanel(JPanel panel,List<JButton> toolButtons) {
+    public void clearPanel(DrawPanel panel,List<JButton> toolButtons) {
         
         //clear all components except for buttons
         for (Component c : panel.getComponents()) {
@@ -25,6 +25,9 @@ public class ClearButtonService {
             } else {
             }
         }
+        
+        //remove also lines
+        panel.clearLines();
         panel.revalidate();
         panel.repaint();
     

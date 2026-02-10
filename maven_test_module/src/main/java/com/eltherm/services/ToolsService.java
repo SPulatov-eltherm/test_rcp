@@ -25,8 +25,10 @@ public class ToolsService {
     
     private Mode currentMode;
     
-    private final JPanel visualBoardPanel; 
+    private final DrawPanel visualBoardPanel; 
+    
     private final ClearButtonService clearButtonService;
+    private final DrawButtonService drawButtonService;
     
     private List<JButton> toolButtons;
    
@@ -46,9 +48,10 @@ public class ToolsService {
         this.toolButtons = toolButtons;
     }
     
-    public ToolsService(JPanel visualBoardPanel) {
+    public ToolsService(DrawPanel visualBoardPanel) {
         this.visualBoardPanel = visualBoardPanel;
         this.clearButtonService = new ClearButtonService();
+        this.drawButtonService = new DrawButtonService();
     }
     
     
@@ -57,6 +60,9 @@ public class ToolsService {
         switch(currentMode){
             case CLEAR_ON -> {
                 clearButtonService.clearPanel(visualBoardPanel,toolButtons);
+            }
+            case DRAW_ON -> {
+                drawButtonService.enableDrawing(visualBoardPanel);
             }
         }
       

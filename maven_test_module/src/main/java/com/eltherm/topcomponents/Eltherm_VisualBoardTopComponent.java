@@ -4,15 +4,13 @@
  */
 package com.eltherm.topcomponents;
 
+import com.eltherm.services.DrawPanel;
 import com.eltherm.services.RepaintService;
 import com.eltherm.services.ToolsService;
 import com.eltherm.services.UIbuilderService;
 import java.awt.BorderLayout;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -60,7 +58,7 @@ public final class Eltherm_VisualBoardTopComponent extends TopComponent {
         JPanel navigator_panel = new JPanel();
         
         //Build main panel for editing elements
-        JPanel visual_board_panel = new JPanel();
+        DrawPanel visual_board_panel = new DrawPanel();
         
         repaintService = new RepaintService(navigator_panel, visual_board_panel);
         
