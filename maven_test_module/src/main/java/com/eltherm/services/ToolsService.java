@@ -4,6 +4,7 @@
  */
 package com.eltherm.services;
 
+import java.awt.Component;
 import java.util.List;
 import javax.swing.JButton;
 
@@ -13,6 +14,7 @@ import javax.swing.JButton;
  */
 public class ToolsService {
     
+    //enum for mode switching 
     enum Mode {
         DRAW_ON,
         DRAW_OFF,
@@ -22,14 +24,27 @@ public class ToolsService {
         SHAPES_OFF
     }
     
+    //current mode that user has selected
     private Mode currentMode;
     
+    //panel where action is performed
     private final DrawPanel visualBoardPanel; 
     
+    //services for clear, draw and shapes button
     private final ClearButtonService clearButtonService;
     private final DrawButtonService drawButtonService;
+    private final ShapesButtonService shapesButtonService;
     
+    //list of buttons. Keep them to redraw them when clear button is clicked
     private List<JButton> toolButtons;
+    
+    //save component for shapes button to use it in popup menu
+    private Component parent;
+    
+    
+    public void setComponent(Component parent) {
+        this.parent = parent;
+    }
    
     
     //set mode and perform action based on mode
@@ -51,6 +66,7 @@ public class ToolsService {
         this.visualBoardPanel = visualBoardPanel;
         this.clearButtonService = new ClearButtonService();
         this.drawButtonService = new DrawButtonService();
+        this.shapesButtonService = new ShapesButtonService();
     }
     
     
@@ -65,6 +81,11 @@ public class ToolsService {
             }
             case DRAW_OFF -> {
                 drawButtonService.disableDrawing(visualBoardPanel);
+            }
+            case SHAPES_ON -> {
+                if(parent!=null) {
+                    shapesButtonService.showShapesPopup(visualBoardPanel,parent);
+                }
             }
         }
       

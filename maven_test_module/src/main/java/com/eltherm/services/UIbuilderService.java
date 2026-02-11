@@ -41,8 +41,11 @@ public class UIbuilderService {
     //List of buttons to redraw
     private final List<JButton> toolButtons = new ArrayList<>();
    
-    //flag to add or remove blue blackground from buttons 
-    private boolean clicked = false;
+    //flag to add or remove blue blackground from draw button 
+    private boolean drawButtonClicked = false;
+    
+    //flag to add or remove green blackground from shapes button
+    private boolean shapesButtonClicked = false;
     
     //Compound Border for both panels;
     private final CompoundBorder border;
@@ -179,18 +182,16 @@ public class UIbuilderService {
                     askForPermission();
                 });
             }
-            
-            
             case "Draw" -> {
                 // turn on or off drawing functionality based on clicking
                 btn.addActionListener((ActionEvent e) -> {
-                    clicked = !clicked;
+                    drawButtonClicked = !drawButtonClicked;
 
                     btn.setBackground(
-                            clicked ? new Color(14, 119, 230) : Color.WHITE
+                            drawButtonClicked ? new Color(14, 119, 230) : Color.WHITE
                     );
 
-                    if (clicked) {
+                    if (drawButtonClicked) {
                         toolsService.setMode(ToolsService.Mode.DRAW_ON);
                     } else {
                         toolsService.setMode(ToolsService.Mode.DRAW_OFF);
@@ -199,7 +200,16 @@ public class UIbuilderService {
             }
             case "Shapes" -> {
                 btn.addActionListener((ActionEvent e) -> {
-                    toolsService.setMode(ToolsService.Mode.SHAPES_ON);
+                    shapesButtonClicked = !shapesButtonClicked;
+                    
+                    btn.setBackground(
+                            shapesButtonClicked ? new Color(0, 181, 20) : Color.WHITE
+                    );
+                    
+                    if(shapesButtonClicked) {
+                        toolsService.setComponent(btn); //first pass button itself for building popup menu
+                        toolsService.setMode(ToolsService.Mode.SHAPES_ON);
+                    }
                 });
             }
         }
