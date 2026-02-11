@@ -4,6 +4,7 @@
  */
 package com.eltherm.services;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.JButton;
@@ -21,7 +22,8 @@ public class ToolsService {
         CLEAR_ON,
         CLEAR_OFF,
         SHAPES_ON,
-        SHAPES_OFF
+        SHAPES_OFF,
+        COLOR_ON
     }
     
     //current mode that user has selected
@@ -34,12 +36,16 @@ public class ToolsService {
     private final ClearButtonService clearButtonService;
     private final DrawButtonService drawButtonService;
     private final ShapesButtonService shapesButtonService;
+    private final ColorButtonService colorButtonService;
     
     //list of buttons. Keep them to redraw them when clear button is clicked
     private List<JButton> toolButtons;
     
     //save component for shapes button to use it in popup menu
     private Component parent;
+    
+    
+    private Color selectedColor = Color.BLACK;
     
     
     public void setComponent(Component parent) {
@@ -67,6 +73,7 @@ public class ToolsService {
         this.clearButtonService = new ClearButtonService();
         this.drawButtonService = new DrawButtonService();
         this.shapesButtonService = new ShapesButtonService();
+        this.colorButtonService = new ColorButtonService();
     }
     
     
@@ -77,16 +84,21 @@ public class ToolsService {
                 clearButtonService.clearPanel(visualBoardPanel,toolButtons);
             }
             case DRAW_ON -> {
-                drawButtonService.enableDrawing(visualBoardPanel);
+                drawButtonService.enableDrawing(visualBoardPanel,selectedColor);
             }
             case DRAW_OFF -> {
                 drawButtonService.disableDrawing(visualBoardPanel);
             }
             case SHAPES_ON -> {
                 if(parent!=null) {
-                    shapesButtonService.showShapesPopup(visualBoardPanel,parent);
+                    shapesButtonService.showShapesPopup(visualBoardPanel,parent,selectedColor);
                 }
             }
+            case COLOR_ON -> {
+                selectedColor = colorButtonService.showColorDialog(visualBoardPanel);
+                
+            }
+            
         }
       
     }

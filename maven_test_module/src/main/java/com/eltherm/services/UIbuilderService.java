@@ -47,6 +47,9 @@ public class UIbuilderService {
     //flag to add or remove green blackground from shapes button
     private boolean shapesButtonClicked = false;
     
+    //flag to add or remove orange blackground from color button
+    private boolean colorButtonClicked = false;
+    
     //Compound Border for both panels;
     private final CompoundBorder border;
     
@@ -95,36 +98,40 @@ public class UIbuilderService {
         JButton clearBtn = createOverlayButton("clear.png", "Clear");
         JButton drawBtn = createOverlayButton("pencil.png", "Draw");
         JButton shapeBtn = createOverlayButton("shapes.png", "Shapes");
+        JButton colorBtn = createOverlayButton("color.png","Color");
+        
        
         panel.add(clearBtn);
         panel.add(drawBtn);
         panel.add(shapeBtn);
+        panel.add(colorBtn);
         
         //add buttons to toolButtons list to redraw them when user chooses to clear panel
         toolButtons.clear();
         toolButtons.add(clearBtn);
         toolButtons.add(drawBtn);
         toolButtons.add(shapeBtn);
+        toolButtons.add(colorBtn);
         toolsService.setToolsButtonList(toolButtons);
         
         
         
         //wait till visual_board_panel is build
         SwingUtilities.invokeLater(() -> {
-            positionToolButtons(panel, clearBtn, drawBtn, shapeBtn);
+            positionToolButtons(panel, clearBtn, drawBtn, shapeBtn,colorBtn);
         });
 
         // position all tools based on panel size
         panel.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                positionToolButtons(panel, clearBtn, drawBtn, shapeBtn);
+                positionToolButtons(panel, clearBtn, drawBtn, shapeBtn,colorBtn);
             }
         }); 
     }
     
     //function to position tool buttons top right to the visual board panel
-    private void positionToolButtons(JPanel panel, JButton clearBtn, JButton drawBtn, JButton shapeBtn) {
+    private void positionToolButtons(JPanel panel, JButton clearBtn, JButton drawBtn, JButton shapeBtn,JButton colorBtn) {
         int btnSize = 30;
         int gap = 6;
         int x = panel.getWidth() - btnSize - 10;
@@ -133,6 +140,7 @@ public class UIbuilderService {
         clearBtn.setBounds(x, y, btnSize, btnSize);
         drawBtn.setBounds(x, y + btnSize + gap, btnSize, btnSize);
         shapeBtn.setBounds(x, y + 2 * (btnSize + gap), btnSize, btnSize);
+        colorBtn.setBounds(x,y + 3 * (btnSize + gap), btnSize,btnSize);
     }
     
     
@@ -212,6 +220,22 @@ public class UIbuilderService {
                     }
                 });
             }
+            
+            case "Color" -> {
+                btn.addActionListener((ActionEvent e) -> {
+                    colorButtonClicked =! colorButtonClicked;
+                    
+                    btn.setBackground(
+                            colorButtonClicked ? new Color(255, 141, 0) : Color.WHITE
+                    );
+                    
+                    if(colorButtonClicked) {
+                        toolsService.setMode(ToolsService.Mode.COLOR_ON);
+                    }
+                });
+                
+                
+            } 
         }
         return btn;
     }

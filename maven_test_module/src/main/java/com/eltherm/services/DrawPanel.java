@@ -26,6 +26,10 @@ public class DrawPanel extends JPanel {
     private final List<StrokeLine> lines = new ArrayList<>();
     private StrokeLine currentLine;
     
+    private Color color = Color.black;
+    
+    public void setColor(Color color) { this.color = color; }
+    
     private final MouseAdapter mouseHandler;
     
     public DrawPanel(){
@@ -37,7 +41,7 @@ public class DrawPanel extends JPanel {
                     return;
                 }
                 //set start point for drawing line
-                currentLine = new StrokeLine(Color.BLACK,3f);
+                currentLine = new StrokeLine(color,3f);
                 currentLine.getPath().moveTo(e.getX(), e.getY());
                 lines.add(currentLine);
             }

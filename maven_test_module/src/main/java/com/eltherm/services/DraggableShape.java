@@ -17,7 +17,7 @@ import javax.swing.JComponent;
  *
  * @author SPulatov
  */
-public class DraggableShapeService extends JComponent {
+public class DraggableShape extends JComponent {
     
     enum ShapeType {
         RECTANGLE,
@@ -25,11 +25,15 @@ public class DraggableShapeService extends JComponent {
         TRIANGLE
     }
     
-    private ShapeType shapeType;
+    //currentColor that user has selected
+    private final Color currentColor;
+    
+    private final ShapeType shapeType;
     private Point dragOffSet;
     
-    public DraggableShapeService(ShapeType type) {
+    public DraggableShape(ShapeType type,Color color) {
         this.shapeType = type;
+        this.currentColor = color;
         setSize(120,120);
         setOpaque(false);
         
@@ -57,7 +61,7 @@ public class DraggableShapeService extends JComponent {
         super.paintComponent(g);
         
         Graphics2D g2 = (Graphics2D) g.create();
-        g2.setColor(new Color(80,140,240));
+        g2.setColor(currentColor);
         g2.setStroke(new BasicStroke(2));
         
         switch(shapeType) {

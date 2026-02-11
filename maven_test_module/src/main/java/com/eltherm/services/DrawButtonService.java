@@ -4,6 +4,8 @@
  */
 package com.eltherm.services;
 
+import java.awt.Color;
+
 
 
 /**
@@ -12,11 +14,14 @@ package com.eltherm.services;
  */
 public class DrawButtonService {
     
+   
     //call this function when draw button is clicked and enable to draw on panel
-    public void enableDrawing(DrawPanel panel) {
+    public void enableDrawing(DrawPanel panel,Color color) {
+        panel.setColor(color);
         panel.setMouseListenerAndMouseMotionListener();
     }
     
+    //call this function to disable drawing
     public void disableDrawing(DrawPanel panel) {
         panel.removeMouseListenerAndMouseMotionListener();
     }

@@ -4,7 +4,8 @@
  */
 package com.eltherm.services;
 
-import com.eltherm.services.DraggableShapeService.ShapeType;
+import com.eltherm.services.DraggableShape.ShapeType;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -20,8 +21,8 @@ import javax.swing.JPopupMenu;
  */
 public class ShapesButtonService {
     
-    
-    public void showShapesPopup(DrawPanel panel,Component parent){
+      
+    public void showShapesPopup(DrawPanel panel,Component parent,Color color){
         JPopupMenu popup = new JPopupMenu();
         popup.setLayout(new GridLayout(3,1));
         
@@ -33,9 +34,9 @@ public class ShapesButtonService {
         popup.add(circleItem);
         popup.add(triangleItem);
         
-        rectItem.addActionListener(e -> addShape(panel,ShapeType.RECTANGLE));
-        circleItem.addActionListener(e -> addShape(panel,ShapeType.CIRCLE));
-        triangleItem.addActionListener(e -> addShape(panel,ShapeType.TRIANGLE));
+        rectItem.addActionListener(e -> addShape(panel,ShapeType.RECTANGLE,color));
+        circleItem.addActionListener(e -> addShape(panel,ShapeType.CIRCLE,color));
+        triangleItem.addActionListener(e -> addShape(panel,ShapeType.TRIANGLE,color));
         
         
         popup.pack(); // calculate width and height
@@ -65,14 +66,14 @@ public class ShapesButtonService {
         return item;
     }
     
-    private void addShape(DrawPanel panel,ShapeType type) {
-        DraggableShapeService shapeService = new DraggableShapeService(type);
+    private void addShape(DrawPanel panel,ShapeType type,Color color) {
+        DraggableShape shape = new DraggableShape(type,color);
         
-        int x = (panel.getWidth() - shapeService.getWidth()) /2;
-        int y = (panel.getHeight() - shapeService.getHeight()) /2;
+        int x = (panel.getWidth() - shape.getWidth()) /2;
+        int y = (panel.getHeight() - shape.getHeight()) /2;
         
-        shapeService.setLocation(x,y);
-        panel.add(shapeService);
+        shape.setLocation(x,y);
+        panel.add(shape);
         panel.repaint();
     }
     
